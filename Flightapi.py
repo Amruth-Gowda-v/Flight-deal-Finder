@@ -20,12 +20,18 @@ response = requests.get(url, params=params)
 response.raise_for_status()
 
 data = response.json()
-
 best_flights = data.get("best_flights", [])
+
+
+cheapest_flights = None
 
 if best_flights:
     cheapest = best_flights[0]
     print("Price:", cheapest["price"])
+    
     print("Successful!")
 else:
     print("No flights found.")
+
+cheapest_flights = cheapest["price"]
+
